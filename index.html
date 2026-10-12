@@ -1,265 +1,1952 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>রেজিস্ট্রেশন | অনলাইন আবেদন ফর্ম</title>
-<meta name="description" content="সহজে ও নিরাপদে অনলাইন রেজিস্ট্রেশন সম্পন্ন করুন।">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>সেসবুক মেম্বারশীপ — নিবন্ধন</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --purple: #7c3aed;
+      --sky: #0ea5e9;
+      --pink: #f472b6;
+      --bkash: #e2136e;
+      --nagad: #f7941d;
+      --rocket: #8b5cf6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --bg: linear-gradient(135deg, #e0e7ff 0%, #fce7f3 40%, #e0f2fe 100%);
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow: 0 10px 40px -10px rgba(79, 70, 229, 0.15);
+      --shadow-lg: 0 20px 60px -15px rgba(79, 70, 229, 0.25);
+    }
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<!-- Bootstrap 5 -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
-<!-- Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    body {
+      font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-<link rel="stylesheet" href="style.css">
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--primary), var(--purple));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.4rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      transition: all 0.25s ease;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: linear-gradient(135deg, #eef2ff, #faf5ff);
+      color: var(--primary);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--primary);
+      padding: 0.3rem;
+    }
+
+    /* ===== HERO / MAIN ===== */
+    .main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--purple), var(--sky));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ===== STEP INDICATOR ===== */
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      position: relative;
+      z-index: 2;
+      min-width: 90px;
+    }
+
+    .step-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: all 0.35s ease;
+      border: 3px solid transparent;
+    }
+
+    .step-item.active .step-circle {
+      background: linear-gradient(135deg, var(--primary), var(--purple));
+      color: white;
+      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+      transform: scale(1.08);
+    }
+
+    .step-item.completed .step-circle {
+      background: var(--success);
+      color: white;
+    }
+
+    .step-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .step-item.active .step-label {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .step-item.completed .step-label {
+      color: var(--success);
+    }
+
+    .step-line {
+      position: absolute;
+      top: 22px;
+      left: 15%;
+      right: 15%;
+      height: 3px;
+      background: #e2e8f0;
+      z-index: 1;
+    }
+
+    .step-line-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--success), var(--primary));
+      width: 0%;
+      transition: width 0.5s ease;
+      border-radius: 3px;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem 1.75rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.8);
+      animation: fadeInUp 0.45s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .card-desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ===== FORM ===== */
+    .form-group {
+      margin-bottom: 1.35rem;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 0.45rem;
+      color: var(--text);
+    }
+
+    .form-label .required {
+      color: var(--error);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      background: #f8fafc;
+      color: var(--text);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+    }
+
+    .form-input.error {
+      border-color: var(--error);
+      background: #fef2f2;
+    }
+
+    .error-msg {
+      color: var(--error);
+      font-size: 0.82rem;
+      margin-top: 0.35rem;
+      display: none;
+    }
+
+    .error-msg.show {
+      display: block;
+    }
+
+    /* ===== SEARCHABLE DROPDOWN ===== */
+    .dropdown-wrapper {
+      position: relative;
+    }
+
+    .dropdown-trigger {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      background: #f8fafc;
+      font-family: inherit;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.25s ease;
+      color: var(--text);
+    }
+
+    .dropdown-trigger:focus,
+    .dropdown-trigger.open {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+    }
+
+    .dropdown-trigger.error {
+      border-color: var(--error);
+      background: #fef2f2;
+    }
+
+    .dropdown-trigger .placeholder {
+      color: var(--muted);
+    }
+
+    .dropdown-panel {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      z-index: 100;
+      max-height: 280px;
+      overflow: hidden;
+      display: none;
+      animation: dropdownOpen 0.2s ease;
+    }
+
+    .dropdown-panel.open {
+      display: block;
+    }
+
+    @keyframes dropdownOpen {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dropdown-search {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dropdown-search input {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: #f8fafc;
+    }
+
+    .dropdown-search input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .dropdown-list {
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 0.4rem;
+    }
+
+    .dropdown-item {
+      padding: 0.7rem 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-size: 0.95rem;
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item.highlighted {
+      background: #eef2ff;
+      color: var(--primary);
+    }
+
+    .dropdown-item.selected {
+      background: linear-gradient(135deg, #eef2ff, #faf5ff);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .dropdown-empty {
+      padding: 1rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ===== PAYMENT CARDS ===== */
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .payment-card {
+      border-radius: 14px;
+      padding: 1.25rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .payment-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .payment-card.bkash {
+      background: linear-gradient(135deg, #e2136e, #c0105c);
+    }
+
+    .payment-card.nagad {
+      background: linear-gradient(135deg, #f7941d, #e07b00);
+    }
+
+    .payment-card.rocket {
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    }
+
+    .payment-card .method-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .payment-card .method-type {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      margin-bottom: 0.7rem;
+    }
+
+    .payment-card .number {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.9rem;
+      font-family: monospace;
+    }
+
+    .copy-btn {
+      background: rgba(255,255,255,0.25);
+      border: none;
+      color: white;
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .copy-btn:hover {
+      background: rgba(255,255,255,0.4);
+    }
+
+    .fee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      padding: 0.5rem 1.1rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===== INFO BOX ===== */
+    .info-box {
+      background: linear-gradient(135deg, #eff6ff, #f0f9ff);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .info-box h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-box li {
+      font-size: 0.9rem;
+      color: #1e3a5f;
+      padding: 0.3rem 0;
+      padding-left: 1.3rem;
+      position: relative;
+    }
+
+    .info-box li::before {
+      content: "•";
+      position: absolute;
+      left: 0.3rem;
+      color: var(--sky);
+      font-weight: bold;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-group {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.75rem;
+    }
+
+    .btn {
+      padding: 0.9rem 1.6rem;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 48px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--purple));
+      color: white;
+      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+      flex: 1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(79, 70, 229, 0.45);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-telegram {
+      background: linear-gradient(135deg, #0088cc, #00a0e3);
+      color: white;
+      width: 100%;
+      font-size: 1.05rem;
+      padding: 1.1rem;
+      box-shadow: 0 6px 20px rgba(0, 136, 204, 0.35);
+    }
+
+    .btn-telegram:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0, 136, 204, 0.45);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    /* ===== SUCCESS / CONFIRMATION ===== */
+    .success-card {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-size: 2.2rem;
+      animation: scaleIn 0.5s ease;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .application-id {
+      background: #f0fdf4;
+      border: 2px dashed #86efac;
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1.25rem 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #166534;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== FILE INPUT ===== */
+    .file-input-wrapper {
+      position: relative;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .file-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1rem;
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .file-label:hover {
+      border-color: var(--primary);
+      background: #eef2ff;
+      color: var(--primary);
+    }
+
+    .file-name {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--success);
+      font-weight: 500;
+      display: none;
+    }
+
+    .file-name.show {
+      display: block;
+    }
+
+    .preview-img {
+      max-width: 120px;
+      max-height: 80px;
+      border-radius: 8px;
+      margin-top: 0.6rem;
+      display: none;
+      border: 2px solid var(--border);
+    }
+
+    .preview-img.show {
+      display: block;
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal {
+      background: white;
+      border-radius: 18px;
+      max-width: 420px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+      animation: modalUp 0.3s ease;
+    }
+
+    @keyframes modalUp {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: #f1f5f9;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.95rem;
+    }
+
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .detail-value {
+      font-weight: 600;
+      color: var(--text);
+      text-align: right;
+      max-width: 60%;
+      word-break: break-all;
+    }
+
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #1e293b;
+      color: white;
+      padding: 0.85rem 1.4rem;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      z-index: 3000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      opacity: 0;
+      transition: all 0.35s ease;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .toast.success {
+      background: linear-gradient(135deg, #059669, #10b981);
+    }
+
+    .toast.error {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+    }
+
+    /* ===== HELP SECTION ===== */
+    .help-section {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .help-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .help-card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .help-card p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 2.5rem 1.25rem 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #1e293b;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ===== HIDDEN SECTIONS ===== */
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.3rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transform: translateY(-120%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .nav-links a {
+        padding: 0.85rem 1rem;
+        border-radius: 10px;
+      }
+
+      .steps {
+        gap: 0.2rem;
+      }
+
+      .step-item {
+        min-width: 70px;
+      }
+
+      .step-circle {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+      }
+
+      .step-label {
+        font-size: 0.72rem;
+      }
+
+      .step-line {
+        top: 18px;
+      }
+
+      .card {
+        padding: 1.5rem 1.15rem;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .payment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .step-label {
+        font-size: 0.65rem;
+      }
+      .step-item {
+        min-width: 60px;
+      }
+    }
+
+    /* Loading spinner */
+    .spinner {
+      width: 22px;
+      height: 22px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+
+    .btn.loading .spinner {
+      display: inline-block;
+    }
+
+    .btn.loading .btn-text {
+      display: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Header -->
-<header class="site-header">
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand" href="#top">
-        <span class="brand-seal"><i class="fa-solid fa-stamp"></i></span>
-        <span class="brand-text">সেসবুক মেম্বারশীপ ফর্ম</span>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo" onclick="goToSection('home'); return false;">
+        <div class="logo-icon">স</div>
+        <span>সেসবুক মেম্বারশীপ</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="মেনু খুলুন">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto text-center">
-          <li class="nav-item"><a class="nav-link" href="#form-section">রেজিস্ট্রেশন</a></li>
-          <li class="nav-item"><a class="nav-link" href="#payment-section">পেমেন্ট</a></li>
-          <li class="nav-item"><a class="nav-link" href="#help-section">সহায়তা</a></li>
-        </ul>
-      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="মেনু">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" class="nav-link active" data-section="home">হোম</a></li>
+        <li><a href="#" class="nav-link" data-section="register">নিবন্ধন</a></li>
+        <li><a href="#" class="nav-link" data-section="payment">ফি প্রদান</a></li>
+        <li><a href="#" class="nav-link" data-section="help">সহায়তা</a></li>
+      </ul>
     </div>
   </nav>
-</header>
 
-<!-- Hero -->
-<section id="top" class="hero">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 text-center">
-        <div class="hero-emblem">
-          <i class="fa-regular fa-file-lines"></i>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main">
+
+    <!-- HOME SECTION -->
+    <section id="home" class="section active">
+      <div class="hero">
+        <h1>সেসবুক মেম্বারশীপ নিবন্ধন</h1>
+        <p>আপনার সদস্যপদ আবেদন সহজে ও নিরাপদে সম্পন্ন করুন। তিনটি সহজ ধাপে নিবন্ধন শেষ করুন।</p>
+      </div>
+
+      <div class="card" style="text-align:center;">
+        <div style="font-size:3rem; margin-bottom:1rem;">📋</div>
+        <h2 class="card-title">নিবন্ধন শুরু করুন</h2>
+        <p class="card-desc">নিবন্ধন ফি মাত্র ৳২০০। আবেদন জমা দেওয়ার পর প্রশাসক পেমেন্ট যাচাই করে নিবন্ধন নিশ্চিত করবেন।</p>
+        <button class="btn btn-primary" onclick="startRegistration()" style="max-width:280px; margin:0 auto;">
+          <span class="btn-text">আবেদন শুরু করুন</span>
+        </button>
+      </div>
+
+      <div class="info-box" style="margin-top:1.5rem;">
+        <h4>ℹ️ গুরুত্বপূর্ণ তথ্য</h4>
+        <ul>
+          <li>নিবন্ধন ফি ২০০ টাকা যেকোনো একটি মোবাইল ব্যাংকিং নম্বরে পাঠান।</li>
+          <li>পেমেন্টের স্ক্রিনশট ও লেনদেন নম্বর সংরক্ষণ করুন।</li>
+          <li>প্রশাসক যাচাই না করা পর্যন্ত আবেদন চূড়ান্ত হবে না।</li>
+          <li>সহায়তার জন্য টেলিগ্রামে যোগাযোগ করুন।</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- REGISTER / STEPS SECTION -->
+    <section id="register" class="section">
+      <div class="hero">
+        <h1>সদস্যপদ নিবন্ধন</h1>
+        <p>তিনটি ধাপে আপনার আবেদন সম্পন্ন করুন</p>
+      </div>
+
+      <!-- Step Indicator -->
+      <div class="steps">
+        <div class="step-line"><div class="step-line-fill" id="stepLineFill"></div></div>
+        <div class="step-item active" id="stepInd1">
+          <div class="step-circle">১</div>
+          <div class="step-label">তথ্য পূরণ</div>
         </div>
-        <h1 class="hero-title">আপনার আবেদন শুরু করুন</h1>
-        <p class="hero-subtitle">নিচের ফর্মটি সঠিকভাবে পূরণ করুন। প্রতিটি ধাপ পরিষ্কারভাবে দেখানো হয়েছে, যাতে আপনি নিশ্চিন্তে আবেদন সম্পন্ন করতে পারেন।</p>
-        <div class="hero-steps">
-          <div class="step-chip"><span class="step-no">১</span> তথ্য পূরণ</div>
-          <div class="step-divider"></div>
-          <div class="step-chip"><span class="step-no">২</span> ফি প্রদান</div>
-          <div class="step-divider"></div>
-          <div class="step-chip"><span class="step-no">৩</span> নিশ্চিতকরণ</div>
+        <div class="step-item" id="stepInd2">
+          <div class="step-circle">২</div>
+          <div class="step-label">ফি প্রদান</div>
+        </div>
+        <div class="step-item" id="stepInd3">
+          <div class="step-circle">৩</div>
+          <div class="step-label">নিশ্চিতকরণ</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- Registration Form -->
-<section id="form-section" class="form-section">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-7 col-md-9">
-        <div class="glass-card">
-          <div class="card-heading">
-            <i class="fa-solid fa-pen-to-square"></i>
-            <h2>আবেদনকারীর তথ্য</h2>
-          </div>
+      <!-- STEP 1: Personal Info -->
+      <div id="step1" class="step-content">
+        <div class="card">
+          <h2 class="card-title">আপনার আবেদন শুরু করুন</h2>
+          <p class="card-desc">নিচের ফর্মটি সঠিকভাবে পূরণ করুন। প্রতিটি ধাপ পরিষ্কারভাবে দেখানো হয়েছে, যাতে আপনি নিশ্চিন্তে আবেদন সম্পন্ন করতে পারেন।</p>
 
-          <form id="registrationForm" novalidate>
-
-            <div class="mb-4 input-group-custom">
-              <label for="fullName" class="form-label"><i class="fa-solid fa-user"></i> পূর্ণ নাম</label>
-              <input type="text" class="form-control" id="fullName" placeholder="যেমনঃ মোহাম্মদ রহিম উদ্দিন" required>
-              <div class="invalid-feedback">অনুগ্রহ করে আপনার পূর্ণ নাম লিখুন।</div>
+          <form id="infoForm" novalidate>
+            <div class="form-group">
+              <label class="form-label">পূর্ণ নাম <span class="required">*</span></label>
+              <input type="text" class="form-input" id="fullName" placeholder="উদাহরণ: মোহাম্মদ রহিম উদ্দিন" autocomplete="name">
+              <div class="error-msg" id="errName">পূর্ণ নাম লিখুন</div>
             </div>
 
-            <div class="mb-4 input-group-custom">
-              <label for="age" class="form-label"><i class="fa-solid fa-cake-candles"></i> বয়স</label>
-              <input type="number" class="form-control" id="age" placeholder="যেমনঃ ২৫" min="1" max="120" required>
-              <div class="invalid-feedback">অনুগ্রহ করে সঠিক বয়স লিখুন (সংখ্যায়)।</div>
+            <div class="form-group">
+              <label class="form-label">বয়স <span class="required">*</span></label>
+              <input type="number" class="form-input" id="age" placeholder="উদাহরণ: ২৫" min="10" max="100">
+              <div class="error-msg" id="errAge">সঠিক বয়স লিখুন (১০-১০০)</div>
             </div>
 
-            <div class="mb-4 input-group-custom">
-              <label for="district" class="form-label"><i class="fa-solid fa-location-dot"></i> জেলা</label>
-              <select class="form-select" id="district" required>
-                <option value="" selected disabled>জেলা নির্বাচন করুন</option>
-              </select>
-              <div class="invalid-feedback">অনুগ্রহ করে আপনার জেলা নির্বাচন করুন।</div>
+            <div class="form-group">
+              <label class="form-label">জেলা নির্বাচন <span class="required">*</span></label>
+              <div class="dropdown-wrapper" id="districtDropdown">
+                <button type="button" class="dropdown-trigger" id="districtTrigger">
+                  <span class="placeholder" id="districtText">জেলা নির্বাচন করুন</span>
+                  <span>▼</span>
+                </button>
+                <div class="dropdown-panel" id="districtPanel">
+                  <div class="dropdown-search">
+                    <input type="text" id="districtSearch" placeholder="জেলার নাম লিখে খুঁজুন..." autocomplete="off">
+                  </div>
+                  <div class="dropdown-list" id="districtList"></div>
+                </div>
+              </div>
+              <div class="error-msg" id="errDistrict">একটি জেলা নির্বাচন করুন</div>
             </div>
 
-            <div class="mb-4 input-group-custom">
-              <label for="mobile" class="form-label"><i class="fa-solid fa-mobile-screen-button"></i> মোবাইল নম্বর</label>
-              <input type="tel" class="form-control" id="mobile" placeholder="০১XXXXXXXXX" maxlength="11" required>
-              <div class="invalid-feedback">অনুগ্রহ করে সঠিক ১১ সংখ্যার মোবাইল নম্বর লিখুন।</div>
+            <div class="form-group">
+              <label class="form-label">মোবাইল নম্বর <span class="required">*</span></label>
+              <input type="tel" class="form-input" id="mobile" placeholder="উদাহরণ: ০১XXXXXXXXX" inputmode="numeric">
+              <div class="error-msg" id="errMobile">সঠিক বাংলাদেশি মোবাইল নম্বর লিখুন (০১XXXXXXXXX)</div>
             </div>
 
-            <div class="mb-4 input-group-custom">
-              <label for="workArea" class="form-label"><i class="fa-solid fa-briefcase"></i> কাজের এরিয়া / কর্মক্ষেত্র</label>
-              <input type="text" class="form-control" id="workArea" placeholder="যেমনঃ ঢাকা, সিলেট, চট্টগ্রাম ইত্যাদি" required>
-              <div class="invalid-feedback">অনুগ্রহ করে আপনার কর্মক্ষেত্র লিখুন।</div>
+            <div class="form-group">
+              <label class="form-label">কাজের এলাকা / কর্মক্ষেত্র <span class="required">*</span></label>
+              <input type="text" class="form-input" id="workArea" placeholder="উদাহরণ: ঢাকা, সিলেট, চট্টগ্রাম" list="workSuggestions">
+              <datalist id="workSuggestions">
+                <option value="ঢাকা">
+                <option value="চট্টগ্রাম">
+                <option value="সিলেট">
+                <option value="রাজশাহী">
+                <option value="খুলনা">
+                <option value="বরিশাল">
+                <option value="রংপুর">
+                <option value="ময়মনসিংহ">
+                <option value="কুমিল্লা">
+                <option value="গাজীপুর">
+              </datalist>
+              <div class="error-msg" id="errWork">কাজের এলাকা লিখুন</div>
             </div>
 
-            <button type="submit" class="btn btn-submit w-100">
-              <i class="fa-solid fa-arrow-right-to-bracket"></i> রেজিস্ট্রেশন করুন
-            </button>
-
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary" id="btnStep1">
+                <span class="btn-text">পরবর্তী ধাপে যান</span>
+                <span class="spinner"></span>
+              </button>
+            </div>
           </form>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- Payment Section (hidden until form submitted) -->
-<section id="payment-section" class="payment-section d-none">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-9">
+      <!-- STEP 2: Payment -->
+      <div id="step2" class="step-content" style="display:none;">
+        <div class="card">
+          <h2 class="card-title">নিবন্ধন ফি ২০০ টাকা প্রদান করুন</h2>
+          <p class="card-desc">নিচের যেকোনো একটি মাধ্যমে নির্ধারিত ফি পাঠান। টাকা পাঠানোর পর লেনদেনের তথ্য সংরক্ষণ করুন।</p>
 
-        <div class="section-heading text-center">
-          <i class="fa-solid fa-wallet"></i>
-          <h2>রেজিস্ট্রেশন ফি ২০০/- প্রদান করুন</h2>
-          <p>নিচের যেকোনো একটি মাধ্যমে ফি পাঠান, তারপর নম্বরটি কপি করে Transaction সম্পন্ন করুন।</p>
-        </div>
+          <div class="fee-badge">💰 নিবন্ধন ফি: ৳২০০</div>
 
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="pay-card pay-bkash">
-              <div class="pay-logo"><i class="fa-solid fa-mobile-retro"></i></div>
-              <h3>বিকাশ</h3>
-              <p class="pay-label">পার্সোনাল নম্বর (Send Money)</p>
-              <div class="pay-number-row">
-                <span class="pay-number" id="bkashNumber">01842151907</span>
-                <button class="copy-btn" data-copy-target="bkashNumber" aria-label="বিকাশ নম্বর কপি করুন">
-                  <i class="fa-regular fa-copy"></i>
-                </button>
-              </div>
+          <div class="payment-grid">
+            <!-- bKash -->
+            <div class="payment-card bkash">
+              <div class="method-name">বিকাশ</div>
+              <div class="method-type">ব্যক্তিগত নম্বর — টাকা পাঠান</div>
+              <div class="number" id="bkashNum">01842151907</div>
+              <button type="button" class="copy-btn" onclick="copyNumber('01842151907', this)">
+                📋 নম্বর কপি করুন
+              </button>
+            </div>
+
+            <!-- Nagad -->
+            <div class="payment-card nagad">
+              <div class="method-name">নগদ</div>
+              <div class="method-type">ব্যক্তিগত নম্বর — টাকা পাঠান</div>
+              <div class="number" id="nagadNum">01722144619</div>
+              <button type="button" class="copy-btn" onclick="copyNumber('01722144619', this)">
+                📋 নম্বর কপি করুন
+              </button>
+            </div>
+
+            <!-- Rocket -->
+            <div class="payment-card rocket">
+              <div class="method-name">রকেট</div>
+              <div class="method-type">ব্যক্তিগত নম্বর — টাকা পাঠান</div>
+              <div class="number" id="rocketNum">01838962362</div>
+              <button type="button" class="copy-btn" onclick="copyNumber('01838962362', this)">
+                📋 নম্বর কপি করুন
+              </button>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="pay-card pay-nagad">
-              <div class="pay-logo"><i class="fa-solid fa-money-bill-transfer"></i></div>
-              <h3>নগদ</h3>
-              <p class="pay-label">পার্সোনাল নম্বর (Send Money)</p>
-              <div class="pay-number-row">
-                <span class="pay-number" id="nagadNumber">01722144619</span>
-                <button class="copy-btn" data-copy-target="nagadNumber" aria-label="নগদ নম্বর কপি করুন">
-                  <i class="fa-regular fa-copy"></i>
-                </button>
-              </div>
-            </div>
+          <!-- Payment Method Select -->
+          <div class="form-group">
+            <label class="form-label">আপনি কোন মাধ্যমে টাকা পাঠিয়েছেন? <span class="required">*</span></label>
+            <select class="form-input" id="paymentMethod">
+              <option value="">পেমেন্ট মাধ্যম নির্বাচন করুন</option>
+              <option value="বিকাশ">বিকাশ</option>
+              <option value="নগদ">নগদ</option>
+              <option value="রকেট">রকেট</option>
+            </select>
+            <div class="error-msg" id="errPayment">পেমেন্ট মাধ্যম নির্বাচন করুন</div>
           </div>
 
-          <div class="col-md-4">
-            <div class="pay-card pay-rocket">
-              <div class="pay-logo"><i class="fa-solid fa-rocket"></i></div>
-              <h3>রকেট</h3>
-              <p class="pay-label">পার্সোনাল নম্বর (Send Money)</p>
-              <div class="pay-number-row">
-                <span class="pay-number" id="rocketNumber">01838962362</span>
-                <button class="copy-btn" data-copy-target="rocketNumber" aria-label="রকেট নম্বর কপি করুন">
-                  <i class="fa-regular fa-copy"></i>
-                </button>
-              </div>
+          <!-- Transaction ID -->
+          <div class="form-group">
+            <label class="form-label">লেনদেন নম্বর (Transaction ID) <span class="required">*</span></label>
+            <input type="text" class="form-input" id="trxId" placeholder="পেমেন্টের পর পাওয়া লেনদেন নম্বর লিখুন">
+            <div class="error-msg" id="errTrx">লেনদেন নম্বর লিখুন</div>
+          </div>
+
+          <!-- Screenshot -->
+          <div class="form-group">
+            <label class="form-label">পেমেন্টের স্ক্রিনশট</label>
+            <div class="file-input-wrapper">
+              <label class="file-label" for="screenshot">
+                📷 পেমেন্টের স্ক্রিনশট নির্বাচন করুন
+              </label>
+              <input type="file" class="file-input" id="screenshot" accept="image/*">
+              <div class="file-name" id="fileName"></div>
+              <img class="preview-img" id="previewImg" alt="প্রিভিউ">
             </div>
+            <p style="font-size:0.8rem; color:var(--muted); margin-top:0.5rem;">
+              ⚠️ স্ক্রিনশট এই ওয়েবসাইটে স্থায়ীভাবে আপলোড হয় না। অনুগ্রহ করে নিজের ডিভাইসে সংরক্ষণ করুন এবং প্রশাসকের কাছে টেলিগ্রামে পাঠান।
+            </p>
+          </div>
+
+          <!-- Payment Instructions -->
+          <div class="info-box">
+            <h4>📌 পেমেন্ট নির্দেশনা</h4>
+            <ul>
+              <li>উপরের যেকোনো একটি নম্বরে ২০০ টাকা পাঠান।</li>
+              <li>টাকা পাঠানোর পর লেনদেন নম্বর সংরক্ষণ করুন।</li>
+              <li>পেমেন্টের স্ক্রিনশট নিজের কাছে রাখুন।</li>
+              <li>নিচের সহায়তা বাটন থেকে প্রশাসকের সঙ্গে যোগাযোগ করুন।</li>
+              <li>প্রশাসক যাচাই না করা পর্যন্ত আবেদন চূড়ান্ত হবে না।</li>
+            </ul>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary" id="btnBack1">আগের ধাপে ফিরে যান</button>
+            <button type="button" class="btn btn-primary" id="btnStep2">
+              <span class="btn-text">পেমেন্ট সম্পন্ন করেছি</span>
+              <span class="spinner"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: Confirmation -->
+      <div id="step3" class="step-content" style="display:none;">
+        <div class="card success-card">
+          <div class="success-icon">⏳</div>
+          <h2 class="card-title">আপনার পেমেন্ট যাচাই করা হচ্ছে</h2>
+          <p class="card-desc" style="margin-bottom:1rem;">
+            আপনার আবেদন জমা হয়েছে। অনুগ্রহ করে পেমেন্টের স্ক্রিনশট প্রশাসকের কাছে পাঠিয়ে যোগাযোগ করুন। যাচাই সম্পন্ন হওয়ার পর আপনার নিবন্ধন নিশ্চিত করা হবে।
+          </p>
+
+          <div class="status-badge">যাচাইয়ের অপেক্ষায়</div>
+
+          <div class="application-id" id="appIdDisplay">
+            আপনার আবেদন নম্বর: —
+          </div>
+
+          <p style="font-size:0.9rem; color:var(--muted); margin-bottom:1.5rem;">
+            আপনার পেমেন্ট যাচাই না হওয়া পর্যন্ত নিবন্ধন চূড়ান্ত নয়।
+          </p>
+
+          <div class="btn-group" style="justify-content:center;">
+            <button type="button" class="btn btn-secondary" id="btnViewDetails">আবেদনের তথ্য দেখুন</button>
+          </div>
+
+          <div style="margin-top:1.75rem;">
+            <button type="button" class="btn btn-telegram" id="btnTelegram">
+              ✈️ প্রশাসকের সঙ্গে টেলিগ্রামে যোগাযোগ করুন
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAYMENT INFO SECTION (standalone) -->
+    <section id="payment" class="section">
+      <div class="hero">
+        <h1>ফি প্রদানের নির্দেশনা</h1>
+        <p>নিবন্ধন ফি ৳২০০ যেকোনো একটি মাধ্যমে পাঠান</p>
+      </div>
+
+      <div class="card">
+        <div class="fee-badge">💰 নিবন্ধন ফি: ৳২০০</div>
+
+        <div class="payment-grid">
+          <div class="payment-card bkash">
+            <div class="method-name">বিকাশ</div>
+            <div class="method-type">ব্যক্তিগত নম্বর — টাকা পাঠান</div>
+            <div class="number">01842151907</div>
+            <button type="button" class="copy-btn" onclick="copyNumber('01842151907', this)">📋 নম্বর কপি করুন</button>
+          </div>
+          <div class="payment-card nagad">
+            <div class="method-name">নগদ</div>
+            <div class="method-type">ব্যক্তিগত নম্বর — টাকা পাঠান</div>
+            <div class="number">01722144619</div>
+            <button type="button" class="copy-btn" onclick="copyNumber('01722144619', this)">📋 নম্বর কপি করুন</button>
+          </div>
+          <div class="payment-card rocket">
+            <div class="method-name">রকেট</div>
+            <div class="method-type">ব্যক্তিগত নম্বর — টাকা পাঠান</div>
+            <div class="number">01838962362</div>
+            <button type="button" class="copy-btn" onclick="copyNumber('01838962362', this)">📋 নম্বর কপি করুন</button>
           </div>
         </div>
 
-        <div class="instructions-card">
-          <h4><i class="fa-solid fa-circle-info"></i> পেমেন্ট নির্দেশনা</h4>
-          <ol>
-            <li>উপরের যেকোনো একটি নম্বরে রেজিস্ট্রেশন ফি পাঠান।</li>
-            <li>টাকা পাঠানোর পরে Transaction সম্পন্ন করুন।</li>
-            <li>Payment-এর Screenshot সংরক্ষণ করুন — এটি যাচাইয়ের সময় প্রয়োজন হতে পারে।</li>
-            <li>প্রয়োজনে নিচের সহায়তা বিভাগ থেকে Admin-এর সাথে যোগাযোগ করুন।</li>
-          </ol>
+        <div class="info-box">
+          <h4>📌 নির্দেশনা</h4>
+          <ul>
+            <li>উপরের যেকোনো একটি নম্বরে ২০০ টাকা পাঠান।</li>
+            <li>টাকা পাঠানোর পর লেনদেন নম্বর ও স্ক্রিনশট সংরক্ষণ করুন।</li>
+            <li>নিবন্ধন প্রক্রিয়া শুরু করতে “নিবন্ধন” মেনুতে যান।</li>
+            <li>প্রশাসক যাচাই না করা পর্যন্ত আবেদন চূড়ান্ত হবে না।</li>
+          </ul>
         </div>
 
-        <div class="text-center mt-4">
-          <button id="confirmPaymentBtn" class="btn btn-confirm">
-            <i class="fa-solid fa-paper-plane"></i> আমি পেমেন্ট সম্পন্ন করেছি
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="startRegistration()">নিবন্ধন শুরু করুন</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HELP SECTION -->
+    <section id="help" class="section">
+      <div class="help-section">
+        <div class="help-card">
+          <div style="font-size:2.8rem; margin-bottom:0.8rem;">💬</div>
+          <h2>আপনার কি সাহায্য প্রয়োজন?</h2>
+          <p>নিবন্ধন, ফি প্রদান অথবা পেমেন্ট যাচাই সংক্রান্ত সহায়তার জন্য প্রশাসকের সঙ্গে যোগাযোগ করুন। আবেদন নম্বর উল্লেখ করলে দ্রুত সহায়তা পাওয়া যাবে।</p>
+          <button class="btn btn-telegram" id="btnHelpTelegram">
+            ✈️ টেলিগ্রামে সহায়তা নিন
           </button>
-          <p class="confirm-note">এই বাটনে ক্লিক করলে আপনার তথ্য জমা হবে। রেজিস্ট্রেশন চূড়ান্তভাবে নিশ্চিত হওয়ার আগে আমাদের টিম পেমেন্ট যাচাই করবে।</p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Help Section -->
-<section id="help-section" class="help-section">
-  <div class="container">
-    <div class="row justify-content-center text-center">
-      <div class="col-lg-7">
-        <i class="fa-solid fa-headset help-icon"></i>
-        <h2>সহায়তা প্রয়োজন?</h2>
-        <p>রেজিস্ট্রেশন বা পেমেন্ট সংক্রান্ত যেকোনো প্রশ্নে আমাদের সাথে যোগাযোগ করুন।</p>
-        <div class="help-contact">
-          <i class="fa-solid fa-phone"></i> ০১XXXXXXXXX &nbsp;|&nbsp; <i class="fa-regular fa-envelope"></i> https://telegram.me/Sesbukchat
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer class="site-footer">
-  <div class="container text-center">
-    <div class="footer-seal"><i class="fa-solid fa-stamp"></i></div>
-    <p class="mb-1">© 2026 আবেদন কেন্দ্র। সর্বস্বত্ব সংরক্ষিত।</p>
-    <p class="footer-note">এই ওয়েবসাইটটি তথ্য গ্রহণ ও যোগাযোগের উদ্দেশ্যে তৈরি।</p>
-  </div>
-</footer>
+  </main>
 
-<!-- Toast container -->
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-  <div id="copyToast" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body">
-        <i class="fa-solid fa-circle-check me-2"></i>
-        <span id="toastMessage">কপি হয়েছে।</span>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">সেসবুক মেম্বারশীপ</div>
+      <div class="footer-links">
+        <a href="#" onclick="goToSection('home'); return false;">হোম</a>
+        <a href="#" onclick="goToSection('register'); return false;">নিবন্ধন</a>
+        <a href="#" onclick="goToSection('payment'); return false;">ফি প্রদানের নির্দেশনা</a>
+        <a href="#" onclick="goToSection('help'); return false;">সহায়তা</a>
       </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="বন্ধ করুন"></button>
+      <div class="footer-note">
+        প্রশাসকের মাধ্যমে পেমেন্ট যাচাই সাপেক্ষে নিবন্ধন নিশ্চিত করা হবে।
+      </div>
     </div>
-  </div>
-</div>
+  </footer>
 
-<!-- Loading overlay -->
-<div id="loadingOverlay" class="loading-overlay d-none">
-  <div class="loader-ring"></div>
-  <p>অনুগ্রহ করে অপেক্ষা করুন...</p>
-</div>
-
-<!-- Success Modal -->
-<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content success-modal-content">
-      <div class="modal-body text-center">
-        <div class="success-icon"><i class="fa-solid fa-check"></i></div>
-        <h3>আবেদন জমা হয়েছে</h3>
-        <p>আপনার আবেদন ও পেমেন্ট তথ্য সফলভাবে জমা নেওয়া হয়েছে।</p>
-        <p>আমাদের টিম আপনার পেমেন্ট যাচাই করার পর আপনার দেওয়া মোবাইল নম্বরে যোগাযোগ করবে।</p>
-        <p class="fw-semibold">ধন্যবাদ।</p>
-        <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">বন্ধ করুন</button>
+  <!-- ===== MODAL: Application Details ===== -->
+  <div class="modal-overlay" id="detailsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>আবেদনের তথ্য</h3>
+        <button class="modal-close" id="modalClose">×</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- filled by JS -->
       </div>
     </div>
   </div>
-</div>
 
-<!-- Bootstrap Bundle JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    /**
+     * ============================================================
+     * সেসবুক মেম্বারশীপ — নিবন্ধন পোর্টাল
+     * ============================================================
+     * এটি শুধুমাত্র ফ্রন্টএন্ড HTML ফাইল।
+     * সীমাবদ্ধতা:
+     * - localStorage শুধু ব্যবহারকারীর নিজের ব্রাউজারে তথ্য রাখে।
+     * - কেন্দ্রীয় ডাটাবেজ নেই; প্রশাসক অন্য ডিভাইস থেকে সব আবেদন দেখতে পারবেন না।
+     * - পেমেন্ট স্বয়ংক্রিয়ভাবে যাচাই হয় না।
+     * - স্ক্রিনশট স্থায়ীভাবে সার্ভারে আপলোড হয় না।
+     * - টেলিগ্রাম লিংক শুধু প্রোফাইল খোলে; স্বয়ংক্রিয় বার্তা/ছবি পাঠায় না।
+     * ভবিষ্যতে ব্যাকএন্ড ও ডাটাবেজ যুক্ত করা সম্ভব।
+     * ============================================================
+     */
+
+    // ===== পরিবর্তনযোগ্য সেটিং =====
+    const ADMINTELEGRAM = "YOURTELEGRAM_USERNAME"; // এখানে প্রশাসকের টেলিগ্রাম ইউজারনেম বসান
+
+    // ===== ৬৪ জেলা =====
+    const DISTRICTS = [
+      "কক্সবাজার", "কিশোরগঞ্জ", "কুড়িগ্রাম", "কুমিল্লা", "কুষ্টিয়া",
+      "খাগড়াছড়ি", "খুলনা", "গাইবান্ধা", "গাজীপুর", "গোপালগঞ্জ",
+      "চাঁদপুর", "চাঁপাইনবাবগঞ্জ", "চট্টগ্রাম", "চুয়াডাঙ্গা", "জয়পুরহাট",
+      "জামালপুর", "ঝালকাঠি", "ঝিনাইদহ", "টাঙ্গাইল", "ঠাকুরগাঁও",
+      "দিনাজপুর", "ঢাকা", "নওগাঁ", "নাটোর", "নড়াইল",
+      "নরসিংদী", "নরসিংদী", "নেত্রকোণা", "নীলফামারী", "নোয়াখালী",
+      "পঞ্চগড়", "পটুয়াখালী", "পিরোজপুর", "ফরিদপুর", "ফেনী",
+      "বগুড়া", "বরগুনা", "বরিশাল", "বাগেরহাট", "বান্দরবান",
+      "ব্রাহ্মণবাড়িয়া", "ভোলা", "ময়মনসিংহ", "মাগুরা", "মাদারীপুর",
+      "মানিকগঞ্জ", "মুন্সিগঞ্জ", "মৌলভীবাজার", "মেহেরপুর", "যশোর",
+      "রাঙ্গামাটি", "রাজবাড়ী", "রাজশাহী", "রংপুর", "লক্ষ্মীপুর",
+      "লালমনিরহাট", "শরিয়তপুর", "শেরপুর", "সাতক্ষীরা", "সিরাজগঞ্জ",
+      "সিলেট", "সুনামগঞ্জ", "হবিগঞ্জ"
+    ];
+
+    // ডুপ্লিকেট সরানো (নরসিংদী দুবার ছিল)
+    const uniqueDistricts = [...new Set(DISTRICTS)].sort((a, b) => a.localeCompare(b, 'bn'));
+
+    // ===== State =====
+    let currentStep = 1;
+    let formData = {
+      fullName: '',
+      age: '',
+      district: '',
+      mobile: '',
+      workArea: '',
+      paymentMethod: '',
+      trxId: '',
+      applicationId: '',
+      status: 'যাচাইয়ের অপেক্ষায়',
+      createdAt: ''
+    };
+
+    // ===== DOM Elements =====
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const toastEl = document.getElementById('toast');
+
+    // ===== Init =====
+    document.addEventListener('DOMContentLoaded', () => {
+      initDistrictDropdown();
+      loadFromStorage();
+      bindEvents();
+      updateStepUI();
+    });
+
+    function bindEvents() {
+      // Mobile menu
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+
+      // Nav links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const section = link.dataset.section;
+          goToSection(section);
+          navLinks.classList.remove('open');
+        });
+      });
+
+      // Step buttons
+      document.getElementById('btnStep1').addEventListener('click', validateAndGoStep2);
+      document.getElementById('btnBack1').addEventListener('click', () => goToStep(1));
+      document.getElementById('btnStep2').addEventListener('click', validateAndGoStep3);
+      document.getElementById('btnViewDetails').addEventListener('click', showDetailsModal);
+      document.getElementById('modalClose').addEventListener('click', closeModal);
+      document.getElementById('detailsModal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('detailsModal')) closeModal();
+      });
+
+      // Telegram buttons
+      document.getElementById('btnTelegram').addEventListener('click', openTelegram);
+      document.getElementById('btnHelpTelegram').addEventListener('click', openTelegram);
+
+      // File input
+      document.getElementById('screenshot').addEventListener('change', handleFileSelect);
+
+      // Close dropdown on outside click
+      document.addEventListener('click', (e) => {
+        const wrapper = document.getElementById('districtDropdown');
+        if (!wrapper.contains(e.target)) {
+          document.getElementById('districtPanel').classList.remove('open');
+          document.getElementById('districtTrigger').classList.remove('open');
+        }
+      });
+    }
+
+    // ===== Navigation =====
+    function goToSection(sectionId) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+
+      const section = document.getElementById(sectionId);
+      if (section) section.classList.add('active');
+
+      const link = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+      if (link) link.classList.add('active');
+
+      // If going to register, show current step
+      if (sectionId === 'register') {
+        showStepContent(currentStep);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function startRegistration() {
+      goToSection('register');
+      goToStep(1);
+    }
+
+    function goToStep(step) {
+      currentStep = step;
+      showStepContent(step);
+      updateStepUI();
+      saveToStorage();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showStepContent(step) {
+      document.getElementById('step1').style.display = step === 1 ? 'block' : 'none';
+      document.getElementById('step2').style.display = step === 2 ? 'block' : 'none';
+      document.getElementById('step3').style.display = step === 3 ? 'block' : 'none';
+    }
+
+    function updateStepUI() {
+      for (let i = 1; i <= 3; i++) {
+        const el = document.getElementById(`stepInd${i}`);
+        el.classList.remove('active', 'completed');
+        if (i < currentStep) el.classList.add('completed');
+        else if (i === currentStep) el.classList.add('active');
+      }
+      const fill = document.getElementById('stepLineFill');
+      if (currentStep === 1) fill.style.width = '0%';
+      else if (currentStep === 2) fill.style.width = '50%';
+      else fill.style.width = '100%';
+    }
+
+    // ===== District Dropdown =====
+    function initDistrictDropdown() {
+      const list = document.getElementById('districtList');
+      const trigger = document.getElementById('districtTrigger');
+      const panel = document.getElementById('districtPanel');
+      const search = document.getElementById('districtSearch');
+
+      function renderList(filter = '') {
+        const q = filter.trim().toLowerCase();
+        const filtered = uniqueDistricts.filter(d => {
+          const bn = d.toLowerCase();
+          // simple english mapping for common searches
+          const enMap = {
+            'dhaka': 'ঢাকা', 'chittagong': 'চট্টগ্রাম', 'sylhet': 'সিলেট',
+            'rajshahi': 'রাজশাহী', 'khulna': 'খুলনা', 'barisal': 'বরিশাল',
+            'rangpur': 'রংপুর', 'mymensingh': 'ময়মনসিংহ', 'comilla': 'কুমিল্লা',
+            'gazipur': 'গাজীপুর', 'narayanganj': 'নারায়ণগঞ্জ'
+          };
+          let match = bn.includes(q);
+          if (!match && q) {
+            for (const [en, bnName] of Object.entries(enMap)) {
+              if (en.includes(q) && bnName === d) { match = true; break; }
+            }
+          }
+          return match;
+        });
+
+        if (filtered.length === 0) {
+          list.innerHTML = '<div class="dropdown-empty">কোনো জেলা পাওয়া যায়নি</div>';
+          return;
+        }
+
+        list.innerHTML = filtered.map(d => {
+          const selected = formData.district === d ? 'selected' : '';
+          return `<div class="dropdown-item ${selected}" data-value="${escapeHtml(d)}">${escapeHtml(d)}</div>`;
+        }).join('');
+
+        list.querySelectorAll('.dropdown-item').forEach(item => {
+          item.addEventListener('click', () => {
+            selectDistrict(item.dataset.value);
+          });
+        });
+      }
+
+      trigger.addEventListener('click', () => {
+        panel.classList.toggle('open');
+        trigger.classList.toggle('open');
+        if (panel.classList.contains('open')) {
+          search.value = '';
+          renderList();
+          search.focus();
+        }
+      });
+
+      search.addEventListener('input', () => renderList(search.value));
+
+      renderList();
+    }
+
+    function selectDistrict(name) {
+      formData.district = name;
+      const textEl = document.getElementById('districtText');
+      textEl.textContent = name;
+      textEl.classList.remove('placeholder');
+      document.getElementById('districtPanel').classList.remove('open');
+      document.getElementById('districtTrigger').classList.remove('open');
+      document.getElementById('districtTrigger').classList.remove('error');
+      document.getElementById('errDistrict').classList.remove('show');
+      saveToStorage();
+    }
+
+    // ===== Validation =====
+    function normalizeMobile(val) {
+      // Convert Bengali digits to English
+      const bn = '০১২৩৪৫৬৭৮৯';
+      const en = '0123456789';
+      let s = val.trim().replace(/\s+/g, '');
+      for (let i = 0; i < 10; i++) {
+        s = s.split(bn[i]).join(en[i]);
+      }
+      return s;
+    }
+
+    function isValidBDMobile(num) {
+      const n = normalizeMobile(num);
+      return /^(01[3-9]\d{8})$/.test(n);
+    }
+
+    function validateAndGoStep2() {
+      let valid = true;
+      const name = document.getElementById('fullName').value.trim();
+      const age = document.getElementById('age').value.trim();
+      const mobile = document.getElementById('mobile').value.trim();
+      const work = document.getElementById('workArea').value.trim();
+
+      // Name
+      if (!name || name.length < 2) {
+        showError('fullName', 'errName');
+        valid = false;
+      } else {
+        clearError('fullName', 'errName');
+        formData.fullName = name;
+      }
+
+      // Age
+      const ageNum = parseInt(age, 10);
+      if (!age || isNaN(ageNum) || ageNum < 10 || ageNum > 100) {
+        showError('age', 'errAge');
+        valid = false;
+      } else {
+        clearError('age', 'errAge');
+        formData.age = ageNum;
+      }
+
+      // District
+      if (!formData.district) {
+        document.getElementById('districtTrigger').classList.add('error');
+        document.getElementById('errDistrict').classList.add('show');
+        valid = false;
+      } else {
+        document.getElementById('districtTrigger').classList.remove('error');
+        document.getElementById('errDistrict').classList.remove('show');
+      }
+
+      // Mobile
+      if (!isValidBDMobile(mobile)) {
+        showError('mobile', 'errMobile');
+        valid = false;
+      } else {
+        clearError('mobile', 'errMobile');
+        formData.mobile = normalizeMobile(mobile);
+      }
+
+      // Work area
+      if (!work || work.length < 2) {
+        showError('workArea', 'errWork');
+        valid = false;
+      } else {
+        clearError('workArea', 'errWork');
+        formData.workArea = work;
+      }
+
+      if (!valid) {
+        showToast('অনুগ্রহ করে সব প্রয়োজনীয় তথ্য সঠিকভাবে পূরণ করুন', 'error');
+        return;
+      }
+
+      saveToStorage();
+      goToStep(2);
+    }
+
+    function validateAndGoStep3() {
+      let valid = true;
+      const method = document.getElementById('paymentMethod').value;
+      const trx = document.getElementById('trxId').value.trim();
+
+      if (!method) {
+        showError('paymentMethod', 'errPayment');
+        valid = false;
+      } else {
+        clearError('paymentMethod', 'errPayment');
+        formData.paymentMethod = method;
+      }
+
+      if (!trx || trx.length < 4) {
+        showError('trxId', 'errTrx');
+        valid = false;
+      } else {
+        clearError('trxId', 'errTrx');
+        formData.trxId = trx;
+      }
+
+      if (!valid) {
+        showToast('পেমেন্ট মাধ্যম ও লেনদেন নম্বর আবশ্যক', 'error');
+        return;
+      }
+
+      // Generate application ID
+      formData.applicationId = generateAppId();
+      formData.status = 'যাচাইয়ের অপেক্ষায়';
+      formData.createdAt = new Date().toLocaleString('bn-BD');
+
+      saveToStorage();
+      document.getElementById('appIdDisplay').textContent = `আপনার আবেদন নম্বর: ${formData.applicationId}`;
+      goToStep(3);
+      showToast('আবেদন সফলভাবে জমা হয়েছে', 'success');
+    }
+
+    function showError(inputId, errId) {
+      const input = document.getElementById(inputId);
+      if (input) input.classList.add('error');
+      document.getElementById(errId).classList.add('show');
+    }
+
+    function clearError(inputId, errId) {
+      const input = document.getElementById(inputId);
+      if (input) input.classList.remove('error');
+      document.getElementById(errId).classList.remove('show');
+    }
+
+    // ===== Application ID =====
+    function generateAppId() {
+      const prefix = 'SES';
+      const date = new Date();
+      const y = date.getFullYear().toString().slice(-2);
+      const m = String(date.getMonth() + 1).padStart(2, '0');
+      const d = String(date.getDate()).padStart(2, '0');
+      const rand = Math.floor(1000 + Math.random() * 9000);
+      let id = `${prefix}${y}${m}${d}${rand}`;
+
+      // Avoid immediate duplicates in this session
+      const stored = localStorage.getItem('sesbook_last_ids') || '[]';
+      let ids = JSON.parse(stored);
+      while (ids.includes(id)) {
+        id = `${prefix}${y}${m}${d}${Math.floor(1000 + Math.random() * 9000)}`;
+      }
+      ids.push(id);
+      if (ids.length > 50) ids = ids.slice(-50);
+      localStorage.setItem('sesbook_last_ids', JSON.stringify(ids));
+      return id;
+    }
+
+    // ===== Copy Number =====
+    function copyNumber(num, btn) {
+      navigator.clipboard.writeText(num).then(() => {
+        showToast('নম্বরটি কপি হয়েছে।', 'success');
+        const original = btn.innerHTML;
+        btn.innerHTML = '✓ কপি হয়েছে';
+        setTimeout(() => { btn.innerHTML = original; }, 2000);
+      }).catch(() => {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = num;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('নম্বরটি কপি হয়েছে।', 'success');
+      });
+    }
+
+    // ===== File Select =====
+    function handleFileSelect(e) {
+      const file = e.target.files[0];
+      const nameEl = document.getElementById('fileName');
+      const preview = document.getElementById('previewImg');
+
+      if (file) {
+        nameEl.textContent = `নির্বাচিত ফাইল: ${file.name}`;
+        nameEl.classList.add('show');
+        if (file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            preview.src = ev.target.result;
+            preview.classList.add('show');
+          };
+          reader.readAsDataURL(file);
+        }
+      } else {
+        nameEl.classList.remove('show');
+        preview.classList.remove('show');
+      }
+    }
+
+    // ===== Telegram =====
+    function openTelegram() {
+      let url = `https://t.me/${ADMINTELEGRAM}`;
+      if (formData.applicationId) {
+        const msg = encodeURIComponent(
+          `আবেদন নম্বর: ${formData.applicationId}\n` +
+          `নাম: ${formData.fullName}\n` +
+          `পেমেন্ট মাধ্যম: ${formData.paymentMethod}\n` +
+          `লেনদেন নম্বর: ${formData.trxId}\n` +
+          `অনুগ্রহ করে পেমেন্ট যাচাই করুন।`
+        );
+        url += `?text=${msg}`;
+      }
+      window.open(url, '_blank');
+    }
+
+    // ===== Modal =====
+    function showDetailsModal() {
+      const body = document.getElementById('modalBody');
+      body.innerHTML = `
+        <div class="detail-row">
+          <span class="detail-label">আবেদন নম্বর</span>
+          <span class="detail-value">${escapeHtml(formData.applicationId || '—')}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">নাম</span>
+          <span class="detail-value">${escapeHtml(formData.fullName || '—')}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">জেলা</span>
+          <span class="detail-value">${escapeHtml(formData.district || '—')}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">পেমেন্ট মাধ্যম</span>
+          <span class="detail-value">${escapeHtml(formData.paymentMethod || '—')}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">লেনদেন নম্বর</span>
+          <span class="detail-value">${escapeHtml(formData.trxId || '—')}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">অবস্থা</span>
+          <span class="detail-value">${escapeHtml(formData.status || '—')}</span>
+        </div>
+      `;
+      document.getElementById('detailsModal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('detailsModal').classList.remove('open');
+    }
+
+    // ===== Toast =====
+    function showToast(msg, type = '') {
+      toastEl.textContent = msg;
+      toastEl.className = 'toast show' + (type ? ' ' + type : '');
+      setTimeout(() => {
+        toastEl.classList.remove('show');
+      }, 3000);
+    }
+
+    // ===== localStorage =====
+    function saveToStorage() {
+      try {
+        localStorage.setItem('sesbook_form', JSON.stringify(formData));
+        localStorage.setItem('sesbook_step', currentStep.toString());
+      } catch (e) {
+        console.warn('localStorage save failed', e);
+      }
+    }
+
+    function loadFromStorage() {
+      try {
+        const saved = localStorage.getItem('sesbook_form');
+        const step = localStorage.getItem('sesbook_step');
+        if (saved) {
+          formData = { ...formData, ...JSON.parse(saved) };
+          // Restore form fields
+          if (formData.fullName) document.getElementById('fullName').value = formData.fullName;
+          if (formData.age) document.getElementById('age').value = formData.age;
+          if (formData.district) {
+            document.getElementById('districtText').textContent = formData.district;
+            document.getElementById('districtText').classList.remove('placeholder');
+          }
+          if (formData.mobile) document.getElementById('mobile').value = formData.mobile;
+          if (formData.workArea) document.getElementById('workArea').value = formData.workArea;
+          if (formData.paymentMethod) document.getElementById('paymentMethod').value = formData.paymentMethod;
+          if (formData.trxId) document.getElementById('trxId').value = formData.trxId;
+          if (formData.applicationId) {
+            document.getElementById('appIdDisplay').textContent = `আপনার আবেদন নম্বর: ${formData.applicationId}`;
+          }
+        }
+        if (step) {
+          currentStep = parseInt(step, 10) || 1;
+        }
+      } catch (e) {
+        console.warn('localStorage load failed', e);
+      }
+    }
+
+    // ===== Security: escape HTML =====
+    function escapeHtml(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+  </script>
 </body>
 </html>
